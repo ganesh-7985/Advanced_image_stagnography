@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Image Steganography</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+    Advanced Image Steganography
+</nav>
+
+<div class="container">
+    <div class="box">
+
+        <!-- First Row: Image Upload -->
+        <div class="firstrow">
+            <label for="imageInput" class="custom-file-upload">
+                <div class="icon">
+                    <!-- SVG icon (add your preferred icon here) -->
+                    <!-- (Icon code omitted for brevity) -->
+                </div>
+                <div class="text">
+                    <span>Click to upload image (PNG, JPEG, BMP)</span>
+                </div>
+                <input id="imageInput" type="file" accept="image/png, image/jpeg, image/bmp">
+            </label>
+        </div>
+
+        <!-- Second Row: Message Input -->
+        <div class="secondrow">
+            <textarea id="messageInput" placeholder="Enter message to hide"></textarea>
+            <input type="password" id="passwordInput" placeholder="Enter password (optional)">
+            <div class="embedding-options">
+                <label for="embeddingDepth">Embedding Depth (LSBs):</label>
+                <input type="number" id="embeddingDepth" min="1" max="4" value="1">
+            </div>
+            <div class="buttonsdiv">
+                <button onclick="hideMessage()">Hide Message</button>
+                <button onclick="extractMessage()">Extract Message</button>
+            </div>
+        </div>
+
+        <!-- Third Row: Message Extraction and Analysis -->
+        <div class="thirdrow">
+            <div id="extractedMessage"></div>
+            <input type="password" id="passwordInputExtract" placeholder="Enter password to decrypt">
+            <button onclick="analyzeImage()">Analyze Image for Hidden Data</button>
+        </div>
+
+        <!-- Image Row: Original and Result Images -->
+        <div class="imagerow">
+            <div>
+                <label>Original Image</label>
+                <canvas id="myCanvas" width="400" height="300" willReadFrequently></canvas>
+            </div>
+            <div class="outputdiv">
+                <label>Result</label>
+                <canvas id="myCanvas1" width="400" height="300" willReadFrequently></canvas>
+                <button onclick="downloadImage()">Download Image</button>
+            </div>
+        </div>
+
+        <!-- Message Size Indicator -->
+        <div class="message-size">
+            <span id="messageSizeIndicator">Maximum message size: N/A</span>
+        </div>
+
+        <!-- History Log -->
+        <div class="history-log">
+            <h3>History Log</h3>
+            <ul id="historyList"></ul>
+        </div>
+
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
