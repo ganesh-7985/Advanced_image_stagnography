@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Steganography - Steganography Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Enhanced Typography and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Material+Icons&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <h1>Steganography Hub</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="image_steganography.html">Image Steganography</a></li>
+                <li><a href="video_steganography.html">Video Steganography</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="height: 40vh;">
+        <div class="hero-content">
+            <h2>Video Steganography</h2>
+            <p>Securely embed and retrieve messages within your videos.</p>
+        </div>
+    </section>
+
+    <!-- Steganography Tools -->
+    <section class="steganography-tools">
+        <div class="container">
+            <!-- Upload Section -->
+            <div class="tool-section">
+                <h3>Upload Video</h3>
+                <label for="videoInput" class="custom-file-upload">
+                    <span class="material-icons">cloud_upload</span>
+                    <span>Click to upload video</span>
+                    <input id="videoInput" type="file" accept="video/*">
+                </label>
+            </div>
+
+            <!-- Message Input Section -->
+            <div class="tool-section">
+                <h3>Enter Message</h3>
+                <textarea id="messageInput" placeholder="Enter message to hide"></textarea>
+                <input type="password" id="passwordInput" placeholder="Enter password (optional)">
+                <div class="embedding-options">
+                    <label for="embeddingDepth">Embedding Depth (LSBs):</label>
+                    <input type="number" id="embeddingDepth" min="1" max="2" value="1">
+                </div>
+                <div class="buttonsdiv">
+                    <button onclick="hideMessage()">
+                        <span class="material-icons">visibility_off</span>
+                        Hide Message
+                    </button>
+                    <button onclick="extractMessage()">
+                        <span class="material-icons">visibility</span>
+                        Extract Message
+                    </button>
+                </div>
+            </div>
+
+            <!-- Extraction and Analysis Section -->
+            <div class="tool-section">
+                <h3>Extract Message</h3>
+                <div id="extractedMessage" class="extracted-message"></div>
+                <input type="password" id="passwordInputExtract" placeholder="Enter password to decrypt">
+                <button onclick="analyzeVideo()">
+                    <span class="material-icons">search</span>
+                    Analyze Video for Hidden Data
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Display Section -->
+    <section class="media-display">
+        <div class="container">
+            <div class="media-row">
+                <div class="media-box">
+                    <label>Original Video</label>
+                    <div id="originalMediaContainer">
+                        <video id="originalVideo" controls width="400" height="300"></video>
+                    </div>
+                </div>
+                <div class="media-box">
+                    <label>Result</label>
+                    <div id="resultMediaContainer">
+                        <video id="resultVideo" controls width="400" height="300"></video>
+                    </div>
+                    <button onclick="downloadVideo()">
+                        <span class="material-icons">download</span>
+                        Download Video
+                    </button>
+                </div>
+            </div>
+            <div class="message-size">
+                <span id="messageSizeIndicator">Maximum message size: N/A</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Steganography Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="video_script.js"></script>
+</body>
+</html>

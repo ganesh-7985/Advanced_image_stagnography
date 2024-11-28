@@ -1,16 +1,3 @@
-// User Authentication
-let currentUser = null;
-function login() {
-    let username = document.getElementById('username').value.trim();
-    if (username) {
-        currentUser = username;
-        localStorage.setItem('currentUser', username);
-        alert('Logged in as ' + username);
-    } else {
-        alert('Please enter a username.');
-    }
-}
-
 // Message Size Indicator
 let imageCapacity = 0;
 function updateMessageSizeIndicator() {
@@ -69,11 +56,6 @@ document.getElementById('embeddingDepth').addEventListener('input', calculateIma
 
 // Hide Message Function
 function hideMessage() {
-    if (!currentUser) {
-        alert('Please log in first.');
-        return;
-    }
-
     let canvas = document.getElementById('myCanvas');
     let ctx = canvas.getContext('2d');
 
@@ -109,9 +91,6 @@ function hideMessage() {
     ctx1.putImageData(imageData, 0, 0);
 
     document.getElementById('myCanvas1').style.display = 'block';
-
-    // Save to history
-    addToHistory('Message hidden successfully.');
 
     alert('Message hidden successfully.');
 }
@@ -149,11 +128,6 @@ function hideMessageInImage(imageData, messageBytes, embeddingDepth) {
 
 // Extract Message Function
 function extractMessage() {
-    if (!currentUser) {
-        alert('Please log in first.');
-        return;
-    }
-
     let canvas = document.getElementById('myCanvas');
     let ctx = canvas.getContext('2d');
 
@@ -179,9 +153,6 @@ function extractMessage() {
     }
 
     document.getElementById('extractedMessage').innerText = 'Extracted Message: ' + extractedMessage;
-
-    // Save to history
-    addToHistory('Message extracted: ' + extractedMessage);
 }
 
 // Extract Message from Image Function
@@ -255,26 +226,3 @@ function detectHiddenData(imageData) {
     let changeRate = changes / imgData.length;
     return changeRate > 0.4;
 }
-
-// History Log Functions
-function addToHistory(action) {
-    let historyList = document.getElementById('historyList');
-    let listItem = document.createElement('li');
-    listItem.innerText = new Date().toLocaleString() + ' - ' + action;
-    historyList.appendChild(listItem);
-}
-
-function loadHistory() {
-    let historyList = document.getElementById('historyList');
-    historyList.innerHTML = '';
-}
-
-// On Page Load
-window.onload = function() {
-    currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-        document.getElementById('username').value = currentUser;
-    }
-    loadHistory();
-    updateMessageSizeIndicator();
-};

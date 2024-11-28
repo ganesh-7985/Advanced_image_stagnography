@@ -2,80 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Advanced Image Steganography</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Steganography Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Enhanced Typography and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Material+Icons&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-    Advanced Image Steganography
-</nav>
-
-<div class="container">
-    <div class="box">
-
-        <!-- First Row: Image Upload -->
-        <div class="firstrow">
-            <label for="imageInput" class="custom-file-upload">
-                <div class="icon">
-                    <!-- SVG icon (add your preferred icon here) -->
-                    <!-- (Icon code omitted for brevity) -->
-                </div>
-                <div class="text">
-                    <span>Click to upload image (PNG, JPEG, BMP)</span>
-                </div>
-                <input id="imageInput" type="file" accept="image/png, image/jpeg, image/bmp">
-            </label>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <h1>Steganography Hub</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="image_steganography.html">Image Steganography</a></li>
+                <li><a href="video_steganography.html">Video Steganography</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Second Row: Message Input -->
-        <div class="secondrow">
-            <textarea id="messageInput" placeholder="Enter message to hide"></textarea>
-            <input type="password" id="passwordInput" placeholder="Enter password (optional)">
-            <div class="embedding-options">
-                <label for="embeddingDepth">Embedding Depth (LSBs):</label>
-                <input type="number" id="embeddingDepth" min="1" max="4" value="1">
-            </div>
-            <div class="buttonsdiv">
-                <button onclick="hideMessage()">Hide Message</button>
-                <button onclick="extractMessage()">Extract Message</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Steganography Hub</h2>
+            <p>Securely hide and extract messages within your images and videos using advanced steganography techniques.</p>
+            <div class="hero-buttons">
+                <a href="image_steganography.html" class="btn">
+                    <span class="material-icons">image</span>
+                    Image Steganography
+                </a>
+                <a href="video_steganography.html" class="btn">
+                    <span class="material-icons">movie</span>
+                    Video Steganography
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Third Row: Message Extraction and Analysis -->
-        <div class="thirdrow">
-            <div id="extractedMessage"></div>
-            <input type="password" id="passwordInputExtract" placeholder="Enter password to decrypt">
-            <button onclick="analyzeImage()">Analyze Image for Hidden Data</button>
-        </div>
-
-        <!-- Image Row: Original and Result Images -->
-        <div class="imagerow">
-            <div>
-                <label>Original Image</label>
-                <canvas id="myCanvas" width="400" height="300" willReadFrequently></canvas>
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Features</h2>
+        <div class="features-container">
+            <div class="feature">
+                <span class="material-icons">security</span>
+                <h3>Secure Encryption</h3>
+                <p>Protect your hidden messages with AES encryption, ensuring that only authorized users can access the content.</p>
             </div>
-            <div class="outputdiv">
-                <label>Result</label>
-                <canvas id="myCanvas1" width="400" height="300" willReadFrequently></canvas>
-                <button onclick="downloadImage()">Download Image</button>
+            <div class="feature">
+                <span class="material-icons">tune</span>
+                <h3>Adjustable Embedding Depth</h3>
+                <p>Control the balance between message capacity and media quality by adjusting the number of LSBs used for embedding.</p>
+            </div>
+            <div class="feature">
+                <span class="material-icons">search</span>
+                <h3>Steganalysis Tools</h3>
+                <p>Analyze your media files to detect potential hidden data, enhancing the security of your communications.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Message Size Indicator -->
-        <div class="message-size">
-            <span id="messageSizeIndicator">Maximum message size: N/A</span>
-        </div>
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Steganography Hub</h2>
+        <p>
+            Steganography Hub is a comprehensive tool designed to facilitate the hiding and extraction of messages within digital media. Whether you're looking to secure sensitive information or explore the fascinating world of steganography, our application provides the necessary tools and features to meet your needs.
+        </p>
+    </section>
 
-        <!-- History Log -->
-        <div class="history-log">
-            <h3>History Log</h3>
-            <ul id="historyList"></ul>
-        </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Steganography Hub. All rights reserved.</p>
+    </footer>
 
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
